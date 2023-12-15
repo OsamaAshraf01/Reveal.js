@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<!--<link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
+		<link rel="stylesheet" href="highlight/styles/atom-one-dark.css">
+		
+	</head>
+	<body>
+		<div class="reveal" style="background-color: rgb(0, 16, 38);">
+			<div class="slides">
+				<section data-auto-animate>What is the longest sequence of numbers in this string? abc123efg1234</span></section>
+				<section data-auto-animate>What is the longest sequence of numbers in this string? <span style="color: grey;">abc<b style="color: rgb(255, 0, 0);">123</b>efg<b style="color:rgb(255, 0, 0);">1234</b></span></section>
+				<section>How could we distinguish numbers?</section>
+				<section>Is computer like us ?</section>
+				<section>How is the computer dealing with characters?</section>
+				<section class="ASCII">
+					<section>Computer is dealing with characters in binary(ASCII)</section>
+					<section class="table">
+						<table>
+							<tr>
+								<td>char</td>
+								<td>ASCII</td>
+							<tr>
+								<td>'0'</td>
+								<td>48</td>
+							</tr>
+							<tr>
+								<td>'1'</td>
+								<td>49</td>
+							</tr>
+							<tr>
+								<td>'2'</td>
+								<td>50</td>
+							</tr>
+							<tr>
+								<td>.<br>.</td>
+								<td>.<br>.</td>
+							</tr>
+							
+							<tr>
+								<td>'8'</td>
+								<td>56</td>
+							</tr>
+							<tr>
+								<td>'9'</td>
+								<td>57</td>
+							</tr>
+					</table>
+					</section>
+					<section><pre><h1><code style="text-align: center;">ord()</code></h1></pre></section>
+				</section>
+			    <section class="first step">
+					<section>
+						First step: <em>Making a function to help us</em>
+					</section>
+					
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							def is_number(character):
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							def is_number(character):
+
+								if 48 <= ord(character) <= 57:   # Between 0 & 9
+									return True
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							def is_number(character):
+
+								if 48 <= ord(character) <= 57:   # Between 0 & 9
+									return True
+								else:
+									return False
+						</code></pre>
+					</section>
+					
+					<section>Why bothering ?!<br></section>
+					<section><em style="color: orange">Another tricky way</em></section>
+					<section>
+						<pre data-id="code-animation"><p style="font-size: 30px;"><code>
+						try:
+							
+						except:
+							
+						</code></p></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+						def is_number(character):
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+						def is_number(character):
+							try:
+								int(character)   # available with 0 1 2 ... 9 only
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+						def is_number(character):
+							try:
+								int(character)   # available with 0 1 2 ... 9 only
+								return True
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+						def is_number(character):
+							try:
+								int(character)   # available with 0 1 2 ... 9 only
+								return True
+								
+							except:
+								return False
+						</code></pre>
+					</section>
+				</section>
+				<!--Scond Code-->
+				<section class="second step">
+					<section>Scond step: <em>looping over each character</em></section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+
+							for i in range(len(x)):			# for each character in x
+						</code></pre>
+					</section>
+				</section>
+				<section class="third step">
+					<section>Third step: <em>check and store</em></section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+
+							for i in range(len(x)):			# for each character in x
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+
+							for i in range(len(x)):			# for each character in x
+								if is_number(x[i]):			  # is it a number ?
+									while is_number(x[i]):	# get the whole sequence
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+
+							for i in range(len(x)):			# for each character in x
+
+								current_number = ''		# empty box for storing found numbers
+								
+								if is_number(x[i]):			  # is it a number ?
+									while is_number(x[i]):	# get the whole sequence
+										current_number += x[i]	# store values
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+
+							for i in range(len(x)):			# for each character in x
+							
+								current_number = ''		# empty box for storing found numbers
+								
+								if is_number(x[i]):			  # is it a number ?
+									while is_number(x[i]):	# get the whole sequence
+										current_number += x[i]	# store values
+										i+=1									# the next character
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+
+							for i in range(len(x)):			# for each character in x
+
+								current_number = ''		# empty box for storing found numbers
+								
+								if is_number(x[i]):			  # is it a number ?
+									while i < len(x) is_number(x[i]):	# get the whole sequence
+										current_number += x[i]	# store values
+										i+=1									# the next character
+						</code></pre>
+					</section>
+					
+				</section>
+				<section class="fourth step">
+					<section>fourth step: <em>Which sequence is longer ?</em></section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							for i in range(len(x)):
+							
+							    current_number = ''
+								
+							    if is_number(x[i]):
+							        while is_number(x[i]):
+							            current_number += x[i]
+							            i+=1
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							for i in range(len(x)):
+							
+							    current_number = ''
+								
+							    if is_number(x[i]):
+							        while is_number(x[i]):
+							            current_number += x[i]
+							            i+=1
+
+							        if len(current_number) > len(answer):
+							            answer = current_number
+
+							print(answer)
+						</code></pre>
+					</section>
+				</section>
+				<section class="another solution">
+					<section><em>Another Solution with one loop only</em></section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+
+							for i in range(len(x)):
+								current_number = ''
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+							
+							answer = ''
+
+							for i in range(len(x)):
+								current_number = ''
+
+							    if is_number(x[i]):
+							        answer += x[i]
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+							
+							answer = ''
+
+							for i in range(len(x)):
+
+							    if is_number(x[i]):
+							        answer += x[i]
+
+							    else:
+							        answer += ' '
+						</code></pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation"><code data-trim data-line-numbers>
+							x = input('Enter string: ')
+							
+							answer = ''
+
+							for i in range(len(x)):
+
+							    if is_number(x[i]):
+							        answer += x[i]
+
+							    else:
+							        answer += ' '
+
+							answer = answer.split()		
+							print(max(answer, key=len))
+						</code></pre>
+					</section>
+				</section>
+				<section class="Full overview">
+					<section><em>Full Overview</em></section>
+					<section>
+						<pre><code data-trim data-line-numbers="1-7|10-11|13-14|16-22|24-26|28">
+							# definig function
+							def is_number(character):
+							    result = False
+							    if 48 <= ord(character)  <= 57:
+								    result = True
+								
+							    return result
+							
+
+							x = input('Enter string: ')
+							answer = ''
+
+							# looping over each character
+							for i in range(len(x)):
+
+							    current_number = ''
+
+							    if is_number(x[i]):
+									# get the entire sequence
+							        while i < len(x) and is_number(x[i]):
+							            current_number += x[i]
+							            i+=1
+
+									# Which sequence is longer
+							        if len(current_number) > len(answer):
+							            answer = current_number
+
+							print(answer)
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section><em>Full Overview</em></section>
+					<section>
+						<pre><code data-trim data-line-numbers="1-8|11-12|14-15|17-21|23|25">
+							# difining function
+							def is_number(c):
+							    try:
+							        c = int(c)
+							        return True
+									
+							    except:
+							        return False
+
+
+							x = input('Enter string: ')
+							answer = ''
+
+							# loop over each chracter
+							for i in range(len(x)):
+
+								# store numbers and replace characters
+								if is_number(x[i]):
+									answer += x[i]
+								else:
+									answer += ' '
+
+							answer = answer.split()
+
+							print(max(answer, key=len))
+						</code></pre>
+					</section>
+				</section>
+
+				<section><h1><em>Thank you !</h1></em></section>
+			</div>
+		</div>
+
+
+
+
+		
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
